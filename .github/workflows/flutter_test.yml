@@ -26,3 +26,9 @@ jobs:
 
       - name: Verify coverage file
         run: ls coverage/lcov.info
+
+      - name: Upload coverage to GitHub Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/lcov.info
