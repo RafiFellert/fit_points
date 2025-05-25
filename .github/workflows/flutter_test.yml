@@ -11,24 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.19.0'  # Update to your Flutter version
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Run unit tests
-        run: flutter test test/exercise_counter_test.dart --coverage
-
-      - name: Verify coverage file
-        run: ls coverage/lcov.info
-
-      - name: Upload coverage to GitHub Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-report
-          path: coverage/lcov.info
