@@ -20,12 +20,9 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
-        #working-directory: GymApp1/gym_app_flutter
-        working-directory: GymApp1/GymApp1/gym_app_flutter
 
       - name: Run unit tests
         run: flutter test test/exercise_counter_test.dart --coverage
-        working-directory: GymApp1/GymApp1/gym_app_flutter
 
       - name: Upload coverage to GitHub Artifacts
         uses: actions/upload-artifact@v3
