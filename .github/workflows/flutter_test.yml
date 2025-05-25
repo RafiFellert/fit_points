@@ -20,3 +20,6 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
+
+      - name: Run unit tests
+        run: flutter test test/exercise_counter_test.dart --coverage
