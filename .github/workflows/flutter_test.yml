@@ -24,6 +24,9 @@ jobs:
       - name: Run unit tests
         run: flutter test test/exercise_counter_test.dart --coverage
 
+      - name: Verify coverage file
+        run: ls coverage/lcov.info
+
       - name: Upload coverage to GitHub Artifacts
         uses: actions/upload-artifact@v3
         with:
