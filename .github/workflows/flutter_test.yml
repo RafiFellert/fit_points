@@ -23,3 +23,6 @@ jobs:
 
       - name: Run unit tests
         run: flutter test test/exercise_counter_test.dart --coverage
+
+      - name: Verify coverage file
+        run: ls coverage/lcov.info
