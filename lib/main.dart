@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
     _saveData();
   }
-  
+
   void _showGoalDialog() {
     final controller = TextEditingController(text: dailyGoal.toString());
 
@@ -114,16 +114,16 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("Set Daily Goal"),
+          title: const Text("הכנס יעד יומי"),
           content: TextField(
             controller: controller,
             keyboardType: TextInputType.number,
-            decoration: const InputDecoration(labelText: "Enter goal (e.g. 100)"),
+            decoration: const InputDecoration(labelText: "הכנס יעד (לדוגמא: 100)"),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text("Cancel"),
+              child: const Text("ביטול"),
             ),
             TextButton(
               onPressed: () {
@@ -136,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 }
                 Navigator.pop(context);
               },
-              child: const Text("Save"),
+              child: const Text("שמירה"),
             ),
           ],
         );
@@ -151,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Your Personal Fitness Tracker"),
+        title: const Text("אפליקציית מעקב הכושר המהממת שלך"),
         backgroundColor: Colors.deepPurple.shade200,
       ),
       body: Padding(
@@ -166,23 +166,23 @@ class _MyHomePageState extends State<MyHomePage> {
             const Divider(thickness: 2),
             ElevatedButton(
               onPressed: _showGoalDialog,
-              child: const Text("Set Daily Goal"),
+              child: const Text("עדכן יעד יומי"),
             ),
             Text(
-              "Total Repetitions: $total",
+              "$total: סך נקודות ספורט יומיות",
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             if (!goalReached)
               Text(
-                "Repetitions left to reach goal: $remaining",
+                "$remaining: מספר נקודות ספורט שנותרו להגעה ליעד היומי",
                 style: const TextStyle(fontSize: 16),
               ),
             if (goalReached)
               Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
-                  "🎉 You reached your $dailyGoal repetitions daily goal!",
+                  "🎉הגעת ליעד היומי של $dailyGoal נקודות ספורט",
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
