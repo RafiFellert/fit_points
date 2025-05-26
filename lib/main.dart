@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int legExercise = 0;
   int plank = 0;
 
-  final int dailyGoal = 15;
+  int dailyGoal = 15;
 
  @override
   void initState() {
@@ -74,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
       pullUps = prefs.getInt('pullUps') ?? 0;
       legExercise = prefs.getInt('legExercise') ?? 0;
       plank = prefs.getInt('plank') ?? 0;
+      dailyGoal = prefs.getInt('dailyGoal') ?? 100;
     });
   }
 
@@ -83,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
     await prefs.setInt('pullUps', pullUps);
     await prefs.setInt('legExercise', legExercise);
     await prefs.setInt('plank', plank);
+    await prefs.setInt('dailyGoal', dailyGoal);
   }
 
   void _increment(String type) {
@@ -104,7 +106,43 @@ class _MyHomePageState extends State<MyHomePage> {
     });
     _saveData();
   }
+  
+  void _showGoalDialog() {
+    final controller = TextEditingController(text: dailyGoal.toString());
 
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Set Daily Goal"),
+          content: TextField(
+            controller: controller,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(labelText: "Enter goal (e.g. 100)"),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () {
+                final input = int.tryParse(controller.text);
+                if (input != null && input > 0) {
+                  setState(() {
+                    dailyGoal = input;
+                  });
+                  _saveData();
+                }
+                Navigator.pop(context);
+              },
+              child: const Text("Save"),
+            ),
+          ],
+        );
+      },
+    );
+  }
   int get total => pushups + pullUps + legExercise + plank;
   int get remaining => (dailyGoal - total).clamp(0, dailyGoal);
   bool get goalReached => total >= dailyGoal;
@@ -126,6 +164,10 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildExerciseRow("פלאנק 90 שניות", plank, "plank"),
             const SizedBox(height: 24),
             const Divider(thickness: 2),
+            ElevatedButton(
+              onPressed: _showGoalDialog,
+              child: const Text("Set Daily Goal"),
+            ),
             Text(
               "Total Repetitions: $total",
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
