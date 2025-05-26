@@ -55,10 +55,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int pushups = 0;
-  int handWeights = 0;
+  int pullUps = 0;
   int legExercise = 0;
+  int plank = 0;
 
-  final int dailyGoal = 5;
+  final int dailyGoal = 15;
 
  @override
   void initState() {
@@ -70,23 +71,26 @@ class _MyHomePageState extends State<MyHomePage> {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       pushups = prefs.getInt('pushups') ?? 0;
-      handWeights = prefs.getInt('handWeights') ?? 0;
+      pullUps = prefs.getInt('pullUps') ?? 0;
       legExercise = prefs.getInt('legExercise') ?? 0;
+      plank = prefs.getInt('plank') ?? 0;
     });
   }
 
   Future<void> _saveData() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('pushups', pushups);
-    await prefs.setInt('handWeights', handWeights);
+    await prefs.setInt('pullUps', pullUps);
     await prefs.setInt('legExercise', legExercise);
+    await prefs.setInt('plank', plank);
   }
 
   void _increment(String type) {
     setState(() {
       if (type == 'pushup') pushups++;
-      if (type == 'hand') handWeights++;
+      if (type == 'pullUps') pullUps++;
       if (type == 'leg') legExercise++;
+      if (type == 'plank') plank+=10;
     });
     _saveData();
   }
@@ -94,13 +98,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void _decrement(String type) {
     setState(() {
       if (type == 'pushup' && pushups > 0) pushups--;
-      if (type == 'hand' && handWeights > 0) handWeights--;
+      if (type == 'pullUps' && pullUps > 0) pullUps--;
       if (type == 'leg' && legExercise > 0) legExercise--;
+      if (type == 'plnak' && plank > 0) plank-=10;
     });
     _saveData();
   }
 
-  int get total => pushups + handWeights + legExercise;
+  int get total => pushups + pullUps + legExercise + plank;
   int get remaining => (dailyGoal - total).clamp(0, dailyGoal);
   bool get goalReached => total >= dailyGoal;
 
@@ -115,9 +120,10 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            _buildExerciseRow("Pushups", pushups, "pushup"),
-            _buildExerciseRow("Hand Weights", handWeights, "hand"),
-            _buildExerciseRow("Leg Exercise", legExercise, "leg"),
+            _buildExerciseRow("שכיבות סמיכה", pushups, "pushup"),
+            _buildExerciseRow("עליות מתח", pullUps, "pullUps"),
+            _buildExerciseRow("סקוואטים", legExercise, "leg"),
+            _buildExerciseRow("פלאנק 90 שניות", plank, "plank"),
             const SizedBox(height: 24),
             const Divider(thickness: 2),
             Text(
