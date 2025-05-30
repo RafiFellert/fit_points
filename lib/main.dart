@@ -63,10 +63,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int dailyGoal = 15;
 
+DateTime currentDateTime = DateTime.now();
+late Timer _timer;
+
+void _startTimer() {
+  _timer = Timer.periodic(const Duration(seconds: 60), (_) {
+    setState(() {
+      currentDateTime = DateTime.now();
+    });
+  });
+}
+
+@override
+void dispose() {
+  _timer.cancel();
+  super.dispose();
+}
+
+
  @override
   void initState() {
     super.initState();
     _loadData();
+    _startTimer();
   }
 
   Future<void> _loadData() async {
@@ -160,6 +179,11 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
+            Text(
+              DateFormat('EEEE, MMM d, yyyy – HH:mm').format(currentDateTime),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
             _buildExerciseRow("שכיבות סמיכה", pushups, "pushup"),
             _buildExerciseRow("עליות מתח", pullUps, "pullUps"),
             _buildExerciseRow("סקוואטים", legExercise, "leg"),
