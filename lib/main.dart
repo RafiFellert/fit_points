@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
+import 'dart:async';
 
 void main() {
   runApp(const MyApp());
@@ -151,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("אפליקציית מעקב הכושר המהממת שלך"),
+        title: const Text("אפליקציית מעקב הכושר המהממת "),
         backgroundColor: Colors.deepPurple.shade200,
       ),
       body: Padding(
