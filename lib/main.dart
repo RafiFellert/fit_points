@@ -2,12 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gym_app_flutter/l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+class LocaleProvider with ChangeNotifier {
+  Locale _locale = Locale('he'); // Default locale
+
+  Locale get locale => _locale;
+
+  void setLocale(Locale locale) {
+    _locale = locale;
+    notifyListeners();
+  }
+}
+
+final LocaleProvider providers = LocaleProvider();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,7 +30,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
-      locale: Locale('he'), // or use a dynamic provider
+      locale: providers.locale,
       theme: ThemeData(
         // This is the theme of your application.
         //
