@@ -2,12 +2,51 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
+import 'package:provider/provider.dart';
 import 'package:gym_app_flutter/l10n/app_localizations.dart';
+import 'package:gym_app_flutter/providers/locale_provider.dart';
+import 'package:gym_app_flutter/pages/settings_page.dart'; // Import the settings page
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => LocaleProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
+class LanguageSwitcher extends StatelessWidget {
+  const LanguageSwitcher({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final provider = Provider.of<LocaleProvider>(context);
+    final locale = provider.locale;
+
+    return DropdownButton<Locale>(
+      value: locale,
+      icon: const Icon(Icons.language),
+      items: const [
+        DropdownMenuItem(
+          value: Locale('en'),
+          child: Text('English'),
+        ),
+        DropdownMenuItem(
+          value: Locale('he'),
+          child: Text('עברית'),
+        ),
+      ],
+      onChanged: (Locale? newLocale) {
+        if (newLocale != null) {
+          provider.setLocale(newLocale);
+        }
+      },
+    );
+  }
+}
+
+/*
 class LocaleProvider with ChangeNotifier {
   Locale _locale = Locale('he'); // Default locale
 
@@ -17,36 +56,25 @@ class LocaleProvider with ChangeNotifier {
     _locale = locale;
     notifyListeners();
   }
+
+  void clearLocale() {
+    _locale = const Locale('en');
+    notifyListeners();
+  }
 }
-
-final LocaleProvider providers = LocaleProvider();
-
+*/
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final localeProvider = Provider.of<LocaleProvider>(context);
     return MaterialApp(
       title: 'Flutter Demo',
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
-      locale: providers.locale,
+      locale: localeProvider.locale,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -70,6 +98,30 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(localizations.appTitle),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: LanguageSwitcher(),
+          ),
+        ],
+      ),
+      body: Center(
+        child: Text(localizations.welcomeMessage),
+      ),
+    );
+  }
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -191,6 +243,19 @@ void dispose() {
       appBar: AppBar(
         title: const Text("אפליקציית מעקב הכושר המהממת "),
         backgroundColor: Colors.deepPurple.shade200,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SettingsPage(),
+                ),
+              );
+            },
+          ),
+        ],        
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
