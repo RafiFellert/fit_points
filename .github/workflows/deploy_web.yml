@@ -15,7 +15,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.0' # adjust to your Flutter version
+          flutter-version: '3.19.6' # or any version compatible with Dart 3.7.2
 
       - name: Enable Web
         run: flutter config --enable-web
