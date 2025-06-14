@@ -1,6 +1,6 @@
 {
-    "name": "gym_app_flutter",
-    "short_name": "gym_app_flutter",
+    "name": "fit_points",
+    "short_name": "fit_points",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
