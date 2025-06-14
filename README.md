@@ -1,4 +1,4 @@
-# gym_app_flutter
+# fit_points
 
 A new Flutter project.
 

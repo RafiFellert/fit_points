@@ -3,9 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'package:provider/provider.dart';
-import 'package:gym_app_flutter/l10n/app_localizations.dart';
-import 'package:gym_app_flutter/providers/locale_provider.dart';
-import 'package:gym_app_flutter/pages/settings_page.dart'; // Import the settings page
+import 'package:fit_points/l10n/app_localizations.dart';
+import 'package:fit_points/providers/locale_provider.dart';
+import 'package:fit_points/pages/settings_page.dart'; // Import the settings page
 
 void main() {
   runApp(
