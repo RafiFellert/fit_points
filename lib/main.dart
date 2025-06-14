@@ -46,23 +46,6 @@ class LanguageSwitcher extends StatelessWidget {
   }
 }
 
-/*
-class LocaleProvider with ChangeNotifier {
-  Locale _locale = Locale('he'); // Default locale
-
-  Locale get locale => _locale;
-
-  void setLocale(Locale locale) {
-    _locale = locale;
-    notifyListeners();
-  }
-
-  void clearLocale() {
-    _locale = const Locale('en');
-    notifyListeners();
-  }
-}
-*/
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   // This widget is the root of your application.
@@ -70,14 +53,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final localeProvider = Provider.of<LocaleProvider>(context);
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Fit Points',
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       locale: localeProvider.locale,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Fit Points Home Page'),
     );
   }
 }
