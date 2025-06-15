@@ -115,29 +115,51 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int dailyGoal = 15;
 
-DateTime currentDateTime = DateTime.now();
-late Timer _timer;
+  Timer? _dateCheckTimer;
+  late DateTime _lastCheckedDate;
 
-void _startTimer() {
-  _timer = Timer.periodic(const Duration(seconds: 60), (_) {
-    setState(() {
-      currentDateTime = DateTime.now();
-    });
-  });
-}
-
-@override
-void dispose() {
-  _timer.cancel();
-  super.dispose();
-}
-
-
- @override
+  @override
   void initState() {
     super.initState();
+    _lastCheckedDate = DateTime.now();
+    _startDateCheckTimer();
     _loadData();
     _startTimer();
+  }
+
+  void _startDateCheckTimer() {
+    _dateCheckTimer = Timer.periodic(const Duration(minutes: 1), (timer) {
+      final now = DateTime.now();
+      if (now.day != _lastCheckedDate.day ||
+          now.month != _lastCheckedDate.month ||
+          now.year != _lastCheckedDate.year) {
+        setState(() {
+          pushups = 0;
+          pullUps = 0;
+          legExercise = 0;
+          plank = 0;
+        });
+        _lastCheckedDate = now;
+      }
+    });
+  }
+
+  DateTime currentDateTime = DateTime.now();
+  late Timer _timer;
+
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 60), (_) {
+      setState(() {
+        currentDateTime = DateTime.now();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    _dateCheckTimer?.cancel();
+    super.dispose();
   }
 
   Future<void> _loadData() async {
@@ -165,7 +187,7 @@ void dispose() {
       if (type == 'pushup') pushups++;
       if (type == 'pullUps') pullUps++;
       if (type == 'leg') legExercise++;
-      if (type == 'plank') plank+=10;
+      if (type == 'plank') plank += 10;
     });
     _saveData();
   }
@@ -175,7 +197,7 @@ void dispose() {
       if (type == 'pushup' && pushups > 0) pushups--;
       if (type == 'pullUps' && pullUps > 0) pullUps--;
       if (type == 'leg' && legExercise > 0) legExercise--;
-      if (type == 'plnak' && plank > 0) plank-=10;
+      if (type == 'plnak' && plank > 0) plank -= 10;
     });
     _saveData();
   }
@@ -216,6 +238,7 @@ void dispose() {
       },
     );
   }
+
   int get total => pushups + pullUps + legExercise + plank;
   int get remaining => (dailyGoal - total).clamp(0, dailyGoal);
   bool get goalReached => total >= dailyGoal;
@@ -238,7 +261,7 @@ void dispose() {
               );
             },
           ),
-        ],        
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
