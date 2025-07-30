@@ -248,7 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("אפליקציית מעקב הכושר המהממת "),
+        title: Text(AppLocalizations.of(context)!.awesomeFitnessApp),
         backgroundColor: Colors.deepPurple.shade200,
         actions: [
           IconButton(
@@ -273,31 +273,31 @@ class _MyHomePageState extends State<MyHomePage> {
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
-            _buildExerciseRow("שכיבות סמיכה", pushups, "pushup"),
-            _buildExerciseRow("עליות מתח", pullUps, "pullUps"),
-            _buildExerciseRow("סקוואטים", legExercise, "leg"),
-            _buildExerciseRow("פלאנק 90 שניות", plank, "plank"),
+            _buildExerciseRow(AppLocalizations.of(context)!.pushups, pushups, "pushup"),
+            _buildExerciseRow(AppLocalizations.of(context)!.pullups, pullUps, "pullUps"),
+            _buildExerciseRow(AppLocalizations.of(context)!.squats, legExercise, "leg"),
+            _buildExerciseRow(AppLocalizations.of(context)!.plank, plank, "plank"),
             const SizedBox(height: 24),
             const Divider(thickness: 2),
             ElevatedButton(
               onPressed: _showGoalDialog,
-              child: const Text("עדכן יעד יומי"),
+              child: Text(AppLocalizations.of(context)!.updateGoal),
             ),
             Text(
-              "$total: סך נקודות ספורט יומיות",
+              AppLocalizations.of(context)!.dailyTotal(total),
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             if (!goalReached)
               Text(
-                "$remaining: מספר נקודות ספורט שנותרו להגעה ליעד היומי",
+                AppLocalizations.of(context)!.remainingToGoal(remaining),
                 style: const TextStyle(fontSize: 16),
               ),
             if (goalReached)
               Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
-                  "🎉הגעת ליעד היומי של $dailyGoal נקודות ספורט",
+                  AppLocalizations.of(context)!.goalReached(dailyGoal),
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
