@@ -1,5 +1,19 @@
 {
   "@@locale": "en",
   "appTitle": "Gym App",
-  "welcomeMessage": "Welcome to the Gym App!"
+  "welcomeMessage": "Welcome to the Gym App!",
+  "enterDailyGoal": "Enter Daily Goal",
+  "enterGoal": "Enter Goal (e.g.: 100)",
+  "cancel": "Cancel",
+  "save": "Save",
+  "updateGoal": "Update Daily Goal",
+  "dailyTotal": "Total Daily Fitness Points: {total}",
+  "remainingToGoal": "Remaining to reach your daily goal: {remaining}",
+  "goalReached": "🎉 You've reached your daily goal of {goal} fitness points!",
+  "pushups": "Push-ups",
+  "pullups": "Pull-ups",
+  "squats": "Squats",
+  "plank": "Plank (90 seconds)",
+  "awesomeFitnessApp": "Awesome Fitness Tracker App",
+  "settings": "Settings"
 }

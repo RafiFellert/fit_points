@@ -13,4 +13,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get welcomeMessage => 'Welcome to the Gym App!';
+
+  @override
+  String get enterDailyGoal => 'Enter Daily Goal';
+
+  @override
+  String get enterGoal => 'Enter Goal (e.g.: 100)';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get updateGoal => 'Update Daily Goal';
+
+  @override
+  String dailyTotal(Object total) {
+    return 'Total Daily Fitness Points: $total';
+  }
+
+  @override
+  String remainingToGoal(Object remaining) {
+    return 'Remaining to reach your daily goal: $remaining';
+  }
+
+  @override
+  String goalReached(Object goal) {
+    return '🎉 You\'ve reached your daily goal of $goal fitness points!';
+  }
+
+  @override
+  String get pushups => 'Push-ups';
+
+  @override
+  String get pullups => 'Pull-ups';
+
+  @override
+  String get squats => 'Squats';
+
+  @override
+  String get plank => 'Plank (90 seconds)';
+
+  @override
+  String get awesomeFitnessApp => 'Awesome Fitness Tracker App';
+
+  @override
+  String get settings => 'Settings';
 }

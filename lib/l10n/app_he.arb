@@ -1,5 +1,19 @@
 {
   "@@locale": "he",
   "appTitle": "אפליקציית כושר",
-  "welcomeMessage": "ברוכים הבאים לאפליקציית הכושר!"
+  "welcomeMessage": "ברוכים הבאים לאפליקציית הכושר!",
+  "enterDailyGoal": "הכנס את היעד היומי",
+  "enterGoal": "הכנס יעד (לדוגמא: 100)",
+  "cancel": "ביטול",
+  "save": "שמירה",
+  "updateGoal": "עדכן יעד יומי",
+  "dailyTotal": "סך נקודות ספורט יומיות: {total}",
+  "remainingToGoal": "נותרו {remaining} נקודות ספורט להשלמת היעד היומי",
+  "goalReached": "🎉הגעת ליעד היומי של {goal} נקודות ספורט!",
+  "pushups": "שכיבות סמיכה",
+  "pullups": "עליות מתח",
+  "squats": "סקוואטים",
+  "plank": "פלאנק (90 שניות)",
+  "awesomeFitnessApp": "אפליקציית מעקב הכושר המהממת",
+  "settings": "הגדרות"
 }

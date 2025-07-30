@@ -112,7 +112,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int pullUps = 0;
   int legExercise = 0;
   int plank = 0;
-
   int dailyGoal = 15;
 
   Timer? _dateCheckTimer;
@@ -203,22 +202,23 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _showGoalDialog() {
+    // ignore: unused_local_variable
     final controller = TextEditingController(text: dailyGoal.toString());
 
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("הכנס יעד יומי"),
+          title: Text(localizations.enterDailyGoal),
           content: TextField(
             controller: controller,
             keyboardType: TextInputType.number,
-            decoration: const InputDecoration(labelText: "הכנס יעד (לדוגמא: 100)"),
+            decoration: InputDecoration(labelText: AppLocalizations.of(context)!.enterGoal),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text("ביטול"),
+              child: Text(AppLocalizations.of(context)!.cancel),
             ),
             TextButton(
               onPressed: () {
@@ -231,14 +231,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 }
                 Navigator.pop(context);
               },
-              child: const Text("שמירה"),
+              child: Text(AppLocalizations.of(context)!.save),
             ),
           ],
         );
       },
     );
   }
-
+  // Helper to get localized strings
+  AppLocalizations get localizations => AppLocalizations.of(context)!;
   int get total => pushups + pullUps + legExercise + plank;
   int get remaining => (dailyGoal - total).clamp(0, dailyGoal);
   bool get goalReached => total >= dailyGoal;

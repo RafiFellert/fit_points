@@ -106,6 +106,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Welcome to the Gym App!'**
   String get welcomeMessage;
+
+  /// No description provided for @enterDailyGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Daily Goal'**
+  String get enterDailyGoal;
+
+  /// No description provided for @enterGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Goal (e.g.: 100)'**
+  String get enterGoal;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @updateGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Daily Goal'**
+  String get updateGoal;
+
+  /// No description provided for @dailyTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Daily Fitness Points: {total}'**
+  String dailyTotal(Object total);
+
+  /// No description provided for @remainingToGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining to reach your daily goal: {remaining}'**
+  String remainingToGoal(Object remaining);
+
+  /// No description provided for @goalReached.
+  ///
+  /// In en, this message translates to:
+  /// **'🎉 You\'ve reached your daily goal of {goal} fitness points!'**
+  String goalReached(Object goal);
+
+  /// No description provided for @pushups.
+  ///
+  /// In en, this message translates to:
+  /// **'Push-ups'**
+  String get pushups;
+
+  /// No description provided for @pullups.
+  ///
+  /// In en, this message translates to:
+  /// **'Pull-ups'**
+  String get pullups;
+
+  /// No description provided for @squats.
+  ///
+  /// In en, this message translates to:
+  /// **'Squats'**
+  String get squats;
+
+  /// No description provided for @plank.
+  ///
+  /// In en, this message translates to:
+  /// **'Plank (90 seconds)'**
+  String get plank;
+
+  /// No description provided for @awesomeFitnessApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Awesome Fitness Tracker App'**
+  String get awesomeFitnessApp;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
