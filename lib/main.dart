@@ -313,6 +313,23 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _buildExerciseRow(String label, int count, String type) {
+  
+  String imagePath = '';
+  switch (type) {
+    case 'pushup':
+      imagePath = 'assets/images/pushups.jpg';
+      break;
+    case 'pullUps':
+      imagePath = 'assets/images/pullups.jpg';
+      break;
+    case 'leg':
+      imagePath = 'assets/images/squats.jpg';
+      break;
+    case 'plank':
+      imagePath = 'assets/images/plank.jpg';
+      break;
+  }    
+    
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
@@ -334,6 +351,14 @@ class _MyHomePageState extends State<MyHomePage> {
           Text(
             label,
             style: const TextStyle(fontSize: 18),
+          ),
+                  const SizedBox(width: 10),
+        if (imagePath.isNotEmpty)
+          Image.asset(
+            imagePath,
+            height: 40,
+            width: 40,
+            fit: BoxFit.contain,
           ),
         ],
       ),
