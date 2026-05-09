@@ -1,6 +1,6 @@
 # fit_points
 
-A new Flutter project.
+Fitness application allowing you track you daily exercises
 
 ## Getting Started
 
