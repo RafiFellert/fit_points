@@ -1,4 +1,4 @@
-package com.example.fit_points
+package com.rafif.fit_points
 
 import io.flutter.embedding.android.FlutterActivity
 

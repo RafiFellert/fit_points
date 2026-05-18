@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.fit_points'
+    namespace 'com.rafif.fit_points'
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion '27.0.12077973'
 
@@ -18,8 +18,17 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
+    signingConfigs {
+        release {
+            storeFile file('my-release-key.jks') // שם הקובץ ששמת בתיקיית android/app
+            storePassword 'Pizi1234'
+            keyAlias 'upload'                    // ה-Alias שהגדרת בשלב היצירה
+            keyPassword 'Pizi1234'
+        }
+    }
+
     defaultConfig {
-        applicationId "com.example.fit_points"
+        applicationId "com.rafif.fit_points"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutter.versionCode
@@ -29,7 +38,7 @@ android {
     buildTypes {
         release {
             // Use debug signing config for now (replace with release config when deploying)
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

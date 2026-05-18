@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.example.fit_points",
+  "applicationId": "com.rafif.fit_points",
   "variantName": "release",
   "elements": [
     {
