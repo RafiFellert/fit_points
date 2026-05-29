@@ -1,6 +1,6 @@
 # fit_points
+![Fit Points logo showing a stylized heart-shaped dumbbell icon above the brand name fit_points on a white background; bold sans-serif text reads fit_points; overall energetic and welcoming tone](gym_app_flutter\assets\images\fit_points_logo.jpg)
 
-Fitness application allowing you track you daily exercises
 
 ## Getting Started
 
