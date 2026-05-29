@@ -1,4 +1,5 @@
-# fit_points
+# Fit Points
+Counting your exercises towards the daily goal
 ![Fit Points logo showing a stylized heart-shaped dumbbell icon above the brand name fit_points on a white background; bold sans-serif text reads fit_points; overall energetic and welcoming tone](assets/images/fit_points_logo.jpg)
 
 
