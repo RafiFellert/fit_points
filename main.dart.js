@@ -43707,7 +43707,7 @@ $0(){var s=this,r=s.b
 if(r==="pushup"&&s.a.d>0)--s.a.d
 if(r==="pullUps"&&s.a.e>0)--s.a.e
 if(r==="leg"&&s.a.f>0)--s.a.f
-if(r==="plnak"&&s.a.r>0)s.a.r-=10},
+if(r==="plank"&&s.a.r>0)s.a.r-=10},
 $S:0}
 A.aiC.prototype={
 $1(a){var s,r,q,p=null,o=this.a,n=o.c
