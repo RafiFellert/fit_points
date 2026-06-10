@@ -196,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
       if (type == 'pushup' && pushups > 0) pushups--;
       if (type == 'pullUps' && pullUps > 0) pullUps--;
       if (type == 'leg' && legExercise > 0) legExercise--;
-      if (type == 'plnak' && plank > 0) plank -= 10;
+      if (type == 'plank' && plank > 0) plank -= 10;
     });
     _saveData();
   }
